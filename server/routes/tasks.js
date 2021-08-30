@@ -6,18 +6,24 @@ router.get("/", (req, res) => {
   res.send("This is the root");
 });
 
-router.post("/tasks", controllers.createItem);
+router.post("/tasks", function (req, res) {
+  controllers.createTask;
+});
 
-router.get("/tasks", controllers.getAllItems);
+router.get("/tasks", function (req, res) {
+  controllers.getAllTasks;
+});
 
-router.get("/tasks/:id", controllers.getItemByID);
+router.get("/tasks/:id", function (req, res) {
+  controllers.getTaskByID;
+});
 
-/*******/
-router.get("/tasks/title/:title", controllers.getTaskByTitle);
-/*******/
+router.post("/tasks/:id", function (req, res) {
+  controllers.updateTask;
+});
 
-router.post("/tasks/:id", controllers.updateItem);
-
-router.delete("/tasks/:id", controllers.deleteItem);
+router.delete("/tasks/:id", function (req, res) {
+  controllers.deleteTask;
+});
 
 module.exports = router;

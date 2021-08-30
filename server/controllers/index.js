@@ -3,7 +3,7 @@ const Task = require("../models/task");
 
 const createTask = async (req, res) => {
   try {
-    const task = await new CarBrand(req.body);
+    const task = await new Task(req.body);
     await task.save();
     return res.status(201).json({ task });
   } catch (error) {
@@ -13,7 +13,7 @@ const createTask = async (req, res) => {
 
 const getAllTasks = async (req, res) => {
   try {
-    const tasks = await new CarBrand(req.body);
+    const tasks = await new Task(req.body);
     await tasks.save();
     return res.status(201).json({ task });
   } catch (error) {
@@ -34,43 +34,18 @@ const GetTaskById = async (req, res) => {
   }
 };
 
-/*******/
-const getTaskByTitle = async (req, res) => {
-  try {
-    const { title } = req.params;
-    const tasks = await Task.find();
-    const task = tasks.filter((task) => {
-      if (task.title.toLowerCase() === task.toLowerCase()) {
-        return task;
-      }
-    });
-    if (task) {
-      return res.status(200).json({ task });
-    }
-    return res.status(404).send("Task not found 🛑");
-  } catch (error) {
-    return res.status(500).send(error.message);
-  }
-};
-/*******/
-
 const updateTask = async (req, res) => {
   try {
     const { id } = req.params;
-    await CarBrand.findByIdAndUpdate(
-      id,
-      req.body,
-      { new: true },
-      (err, task) => {
-        if (err) {
-          res.status(500).send(err);
-        }
-        if (!task) {
-          res.status(500).send("Task not found 🛑");
-        }
-        return res.status(200).json(task);
+    await Task.findByIdAndUpdate(id, req.body, { new: true }, (err, task) => {
+      if (err) {
+        res.status(500).send(err);
       }
-    );
+      if (!task) {
+        res.status(500).send("Task not found 🛑");
+      }
+      return res.status(200).json(task);
+    });
   } catch (error) {
     return res.status(500).send(error.message);
   }
@@ -93,7 +68,6 @@ model.exports = {
   createTask,
   getAllTasks,
   GetTaskById,
-  getTaskByTitle,
   updateTask,
   deleteTask,
 };

@@ -4,6 +4,9 @@ const logger = require("morgan");
 
 const routes = require("./routes/tasks");
 
+// const db = require("./db");
+// db.on("error", console.error.bind(console, "MongoDB Connection Error:"));
+
 const app = express();
 
 app.use(cors());
