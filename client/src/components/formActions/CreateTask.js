@@ -1,7 +1,7 @@
 import React from "react";
 
-const Task = () => {
+const CreateTask = () => {
   return <div></div>;
 };
 
-export default Task;
+export default CreateTask;

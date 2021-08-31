@@ -1,4 +1,3 @@
-const { model } = require("mongoose");
 const Task = require("../models/task");
 
 const createTask = async (req, res) => {
@@ -13,20 +12,19 @@ const createTask = async (req, res) => {
 
 const getAllTasks = async (req, res) => {
   try {
-    const tasks = await new Task(req.body);
-    await tasks.save();
-    return res.status(201).json({ task });
+    const tasks = await Task.find();
+    return res.status(200).json({ tasks });
   } catch (error) {
-    return res.status(500).json({ error: error.message });
+    res.status(500).send(`There was an error: ${error.message}`);
   }
 };
 
-const GetTaskById = async (req, res) => {
+const getTaskById = async (req, res) => {
   try {
     const { id } = req.params;
     const task = await Task.findById(id);
     if (task) {
-      return res.status(200).json({ task });
+      return res.status(200).json(task);
     }
     return res.status(404).send("Task not found 🛑");
   } catch (error) {
@@ -64,10 +62,10 @@ const deleteTask = async (req, res) => {
   }
 };
 
-model.exports = {
+module.exports = {
   createTask,
   getAllTasks,
-  GetTaskById,
+  getTaskById,
   updateTask,
   deleteTask,
 };

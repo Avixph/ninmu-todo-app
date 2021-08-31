@@ -2,7 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const logger = require("morgan");
 
-const routes = require("./routes/tasks");
+const routes = require("./routes");
 
 // const db = require("./db");
 // db.on("error", console.error.bind(console, "MongoDB Connection Error:"));
