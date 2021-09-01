@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { getTasks } from "../../services/api-helper";
+import CreateTask from "../formActions/CreateTask";
 import Task from "./Task";
 
 const TaskList = () => {
@@ -24,9 +25,7 @@ const TaskList = () => {
       <div className="py-10">
         <header>
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h1 className="text-4xl font-bold leading-tight text-gray-900">
-              Add Tasks
-            </h1>
+            <CreateTask />
           </div>
         </header>
         <main>
