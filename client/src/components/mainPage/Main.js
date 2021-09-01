@@ -1,13 +1,12 @@
 import React from "react";
-import Layout from "../layout/Layout";
+import Header from "./Header";
 import TaskList from "./TaskList";
 
 const Main = () => {
   return (
     <div>
-      <Layout>
-        <TaskList />
-      </Layout>
+      <Header />
+      <TaskList />
     </div>
   );
 };

@@ -32,7 +32,7 @@ const CreateTask = (props) => {
   };
 
   if (createdTask) {
-    return <Redirect to={`/`} />;
+    return <Redirect to={{ pathname: "/" }} />;
   }
 
   return (
@@ -50,6 +50,7 @@ const CreateTask = (props) => {
                     className={`${
                       open ? "transform rotate-180" : ""
                     } w-10 h-10 text-white`}
+                    aria-hidden="true"
                   />
                 </Disclosure.Button>
                 <Disclosure.Panel>
