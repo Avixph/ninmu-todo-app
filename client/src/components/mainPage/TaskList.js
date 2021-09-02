@@ -14,7 +14,7 @@ const TaskList = () => {
 
   useEffect(() => {
     fetchTasks();
-  }, []);
+  }, [tasks]);
 
   const showTasks = tasks.map((task) => {
     return <Task {...task} key={task._id} />;

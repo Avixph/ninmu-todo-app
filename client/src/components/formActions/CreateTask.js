@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { Redirect } from "react-router-dom";
 import { Disclosure } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/solid";
 import axios from "axios";
@@ -11,7 +10,6 @@ const CreateTask = (props) => {
     title: "",
     task_Detail: "",
   });
-  const [createdTask, setCreatedTask] = useState(null);
 
   const handleChange = (event) => {
     const updatedField = { [event.target.name]: event.target.value };
@@ -27,13 +25,15 @@ const CreateTask = (props) => {
       method: "POST",
       data: task,
     })
-      .then((res) => setCreatedTask(res.data.task))
+      .then((res) => {
+        return res;
+      })
       .catch(console.error);
   };
 
-  if (createdTask) {
-    return <Redirect to={{ pathname: "/" }} />;
-  }
+  // if (createdTask) {
+  //   return <Redirect to={{ pathname: "/" }} />;
+  // }
 
   return (
     <>
